@@ -50,10 +50,28 @@ def wave_height_dict():
 
 wave_height_dict()
 def average_height():
+    week = []
     del data[0]
     days_of_week = [0,1,2,3,4,5,6]
     for days in days_of_week:
-        day = [float(lists[1] for lists in data if datetime.strptime(lists[5].replace("-"," "),'%Y %m %d').weekday() == days]
-
-
+        day = [float(lists[1]) for lists in data if datetime.strptime(lists[5].replace("-"," "),'%Y %m %d').weekday() == days]
+        week.append(day)
+    avesum = [sum(height)/len(height) for height in week]
+    aveheight = dict(zip(days_of_week, avesum))
+    # print (aveheight)
 average_height()
+
+def nested():
+    my_dictionary = {'Gale': {'Homework 1': 88, 'Homework 2': 76}, 'Jordan': {'Homework 1': 92,
+    'Homework 2': 87}, 'Peyton': {'Homework 1': 84, 'Homework 2': 77},
+    'River': {'Homework 1': 85, 'Homework 2': 91}}
+
+    avescore = { names : (my_dictionary[names]["Homework 1"] + my_dictionary[names]["Homework 2"])/2
+               for names in my_dictionary
+               for values in my_dictionary[names]}
+
+
+    print (avescore)
+
+
+nested()
